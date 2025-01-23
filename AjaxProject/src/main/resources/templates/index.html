@@ -12,14 +12,17 @@
 
 <script>
   $.ajax({
-    url:'/api/data', // controller 서버의 앤드포인트 경로
+    url:'/api/member', // controller 서버의 앤드포인트 경로
     method:'GET', // HTTP Method
     dataType:'json', // 서버에서 반환할 데이터 타입
     success:
     function(data){
+      $each(data,function (index,value){
       //성공시 데이터 화면 표시
-      $('#main-container').append('<p>msg:'+JSON.stringify(data))
-      $('#main-container').append('<p>status:'+JSON.stringify(data))
+      $('#main-container').append('<p>'+value.nickname+'</p>')
+
+      })
+
     },
 
     error :
@@ -27,6 +30,23 @@
       $("#mainContainer").html('데이터를 가져오지 못했습니다')
     }
   })
+  //
+  // $.ajax({
+  //   url:'/api/data', // controller 서버의 앤드포인트 경로
+  //   method:'GET', // HTTP Method
+  //   dataType:'json', // 서버에서 반환할 데이터 타입
+  //   success:
+  //           function(data){
+  //             //성공시 데이터 화면 표시
+  //             $('#main-container').append('<p>msg:'+JSON.stringify(data.msg)+'</p>')
+  //             $('#main-container').append('<p>status:'+JSON.stringify(data.status)+'</p>')
+  //           },
+  //
+  //   error :
+  //           function(){
+  //             $("#mainContainer").html('데이터를 가져오지 못했습니다')
+  //           }
+  // })
 </script>
 
 
